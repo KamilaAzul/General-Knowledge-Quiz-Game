@@ -1,31 +1,60 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# General Knowledge Quiz: 3rd Project
 
-Welcome USER_NAME,
+![](views/m.PNG)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+<br/>  
 
-## Reminders
+ 
+## Introduction <a name="introduction"></a>  
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+My third project is a General Knowledge Quiz.
+I believe that people who like to test their knowledge will enjoy.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+<br/>
 
-1. `heroku/python`
-2. `heroku/nodejs`
+[Visit the General Knowledge Quiz.](https://herokuapp.com/)  
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+[Visit the General Knowledge Quiz. Repository](https://github.com....)
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+<br/>    
 
-Connect your GitHub repository and deploy as normal.
+----
 
-## Constraints
+## UX Strategy
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Game is designed using Python default view in black screen.
 
------
-Happy coding!
+<br/> 
+
+### The Business Goals of the Website:
+- Website does' commercial goals, but the site's goal is to provide an interactive quiz.
+  
+  <br/> 
+
+### The Target Customer:
+
+- The audience of the site could encompass a number of age groups and there would generally not be any   limitation on who could not play.   
+       
+- Would probably require some access to digital technology(not mobile).      
+- May be useful for a user who has spare time and enjoys football.    
+
+ <br/>  
+ 
+----
+
+<br>
+
+## User Stories
+
+<br>
+
+### As a first time user and a regular user to this site, I want to:
+- Understand how the Game Works.
+- Play the Game.
+- See if my answer was correct
+- See the correct answer
+- See the leaderboard
+
+  <br/>  
+----
