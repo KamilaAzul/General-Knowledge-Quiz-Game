@@ -1,10 +1,10 @@
-import gspread
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
+
 
 # intro text 
    
@@ -19,77 +19,87 @@ players_name = ""
 players_name = input("Please enter your name: \n")
 print("Hello "+str(players_name)+"", "I wish you the best of luck!\n")
 
+
 def start_game():
 
     responses = []
     correct_responses = 0
     question_num = 1
 
-
     for key in questions:
-	    print(" . . . . . . . . . . . . . . . . . ")
-	    print(key)
-		for i in options[question_num-1]:
+        print("-------------------------")
+        print(key)
+        for i in options[question_num-1]:
             print(i)
-
-    # Verify if the player is choosing a valid reply
-		while True:
-	        reply = input("Choose (A, B, C or D): ")
+        # Verify if the player is choosing a valid reply
+        while True:
+            reply = input("Choose(A, B, C, or D): \n")
             reply = reply.upper()
-            responses.append(reply)
-		    if reply not in (A, B, C or D)
-		        print("Wrong choice, the only options are A, B, C, or D")		    
+            if reply not in ('A', 'B', 'C', 'D'):
+                print("Wrong choice, the only options are A, B, C, or D")
             else:
                 break
-            correct_responses += verify_score(responses.get(key),reply)
-            question_num += 1
 
-     show_score(correct_responses, responses)
-    
-        
+        responses.append(reply)
+
+        correct_responses += verify_score(questions.get(key), reply)
+        question_num += 1
+
+    show_score(correct_responses, responses) 
+     
 # Verifying if the player gave a corect or incorrect reply
 
-def verify_score(score,reply):
-    
-    if score == reply:
+
+def verify_score(score, reply):
+
+    if reply == score:
         print(" Good answer")
         return 1
     else:
-        print("This is incorrect answer")
+        print("This is wrong answer")
         return 0
-        
+
+# This fucntion will show the correct results and the choices
+
+
 def show_score(correct_responses, responses):
 
-    print(".............................")
-    print("        Your score           ")
-    print(".............................")
-
-    print("Answers: ", end="")
-    for i in questions:
-        print(questions.get(i), end" ")
-    print()
-
-    print("Responses : ", end="")
-    for i in responses:
-        print(i, end" ")
-    print()
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
+    print("                 YOUR SCORE                 ")
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
 
     percentage = (correct_responses/len(questions)) * 100
-    print("You got " + str(percentage) + "% of good answers!")
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
+    print(str(players_name)+", you got " + str(percentage) + "% of good answers!")
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-def play_agian():
+    print("Those are yours replies: ", end="")
+    for i in responses:
+        print(i, end=" ")
+    print()
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
+
+    print("Those are correct ones: ", end="")
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
+    print(". . . . . . . . . . . . . . . . . . . . . . ")
+
+
+    
+# This fucntion is asking the user if he wants to try again or end the game
+
+
+def restart_game():
     while True:
-        response = input("Would you like to try again? (yes or no): \n")
+        response = input(str(players_name)+", would you like to try play one more time? (yes or no): \n")
         response = response.upper()
-
         if response not in ('YES', 'NO'):
-            print("Wrong choice, the only options are are YES or NO")
+            print("Invalid choice, the only options are YES or NO")
         elif response == "YES":
             return True
         else:
             break
-
-
 
 
 # Quiz questions and answers
@@ -121,9 +131,7 @@ options = [["A Madagascar", "B. Java", "C. New Zealand", "D. Greenland"],
 
 start_game()
 
-
-while play_agian():
-    start_game()
-
+while restart_game():
+   start_game()
 
 print("Thank you for playing! Byeee:)")
