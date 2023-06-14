@@ -17,10 +17,12 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 # Contents
 
 * [**User Experience UX**](<#user-experience-ux>)
-    * [Site Structure](<#site-structure>)
-
+    * [UX Strategy](<#ux-strategy>)
+    * [User Stories](<#user-stories>)
 * [**Features**](<#features>)
+    * [Quiz Flow](<#quiz-flow>)
 * [**Technologies Used**](<#technologies-used>)
+    * [Classes&Functions](<#classes&functions>)
 * [**Testing**](<#testing>)
 * [**Deployment**](<#deployment>)
 * [**Credits**](<#credits>)
@@ -77,7 +79,7 @@ The flowchart shows the entire cycle of the game and the planning process.
 
 [Back to top](<#contents>)
 
-### Classes & Functions
+## Classes & Functions
 
 The primary functions used on this application are:
 
