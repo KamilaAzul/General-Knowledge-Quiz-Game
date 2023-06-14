@@ -31,7 +31,7 @@ def start_game():
 	    print(key)
 		for i in options[question_num-1]:
             print(i)
-
+    # Verify if the player is choosing a valid reply
 		while True:
 	        reply = input("Choose (A, B, C or D): ")
             reply = reply.upper()
@@ -43,8 +43,7 @@ def start_game():
             correct_responses += verify_score(responses.get(key),reply)
             question_num += 1
         
-		
-
+# Verifying if the player gave a corect or incorrect reply
 def verify_score(score,reply):
     
     if score == reply:
