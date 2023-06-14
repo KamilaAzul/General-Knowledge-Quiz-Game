@@ -6,11 +6,11 @@
 
 My third project is a General Knowledge Quiz. It's a small game for people who have the willingness to learn new things and like to test their knowledge.
 
-<br/>
+<br/>![Alt text](assets/Game1.png)
 
-[Visit the General Knowledge Quiz.](https://herokuapp.com/)  
+[Visit the General Knowledge Quiz](https://general-knowledge-quiz-game-eabd9d6363af.herokuapp.com/)  
 
-[Visit the General Knowledge Quiz. Repository](https://github.com....)
+[Visit the General Knowledge Quiz Repository](https://github.com/KamilaAzul/General-Knowledge-Quiz-Game/blob/main/README.md)
 
 <br/>    
 
@@ -92,6 +92,7 @@ The primary functions used on this application are:
 - `def restart_game()` 
 * Gives the player the option to restart the game.
 
+![Alt text](<assets/One more time.png>)
 [Back to top](<#contents>)
 
 ### Future Features possible to implement:
@@ -104,7 +105,17 @@ The primary functions used on this application are:
 
 ## Testing
 
-I tested my project on PEP8 as suggested in the course.
+I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) as recommended.
+
+![Alt text](assets/pep8ci.png)
+
+[Back to top](<#contents>)
+
+## Lighthouse validation
+
+Deployed project was tested by the Lighthouse Audit tool to check for any major issues.
+
+![Alt text](assets/Lighthouse.png)
 
 [Back to top](<#contents>)
 
@@ -146,12 +157,23 @@ I tested my project on PEP8 as suggested in the course.
 * In the builldpacks section click 'add buildpack'.
 * Add  'Python' and 'save changes, 
 * Repeat the process with 'Node',
+
+<br>
+
+![Python&Node](assets/herokuDeployment.png)
+
+<br>
+
 * Go to the Deploy tab and select 'github',
 * Confirm connection to your GitHub Account.
 * Search for your project repository and click to 'connect'.
 * Under the deploy options, you can chose automatic deploys, 
 * Choose which branch you want to deploy and click on 'Deploy Branch'.
 *  After some time the app is ready,  and we can open the app by using the provided link.
+
+<br>
+
+![Alt text](assets/1.png)
 <br> 
 
 [Back to top](<#contents>)
