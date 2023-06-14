@@ -58,10 +58,36 @@ def verify_score(score,reply):
         print("This is incorrect answer")
         return 0
         
-def show_score():
-    pass
+def show_score(correct_responses, responses):
+
+    print(".............................")
+    print("        Your score           ")
+    print(".............................")
+
+    print("Answers: ", end="")
+    for i in questions:
+        print(questions.get(i), end" ")
+    print()
+
+    print("Responses : ", end="")
+    for i in responses:
+        print(i, end" ")
+    print()
+
+    percentage = (correct_responses/len(questions)) * 100
+    print("You got " + str(percentage) + "% of good answers!")
+
 def play_agian():
-    pass
+    while True:
+        response = input("Would you like to try again? (yes or no): \n")
+        response = response.upper()
+
+        if response not in ('YES', 'NO'):
+            print("Wrong choice, the only options are are YES or NO")
+        elif response == "YES":
+            return True
+        else:
+            break
 
 
 
@@ -92,3 +118,12 @@ options = [["A Madagascar", "B. Java", "C. New Zealand", "D. Greenland"],
            ["A. Canada", "B. USA", "C. Russia", "D. India"],
            ["A. Five", "B. Six", "C. Seven", "D. Eight"],
            ["A. Na", "B. Fa", "C. Cu", "D. Ag"]]
+
+start_game()
+
+
+while play_agian():
+    start_game()
+
+
+print("Thank you for playing! Byeee:)")
