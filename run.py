@@ -6,12 +6,14 @@ SCOPE = [
     ]
 
 
-# intro text 
+# Welcoming text
    
 print("Welcome to Knowledge Quiz")
-print("-------------------------")
+print(". . . . . . . . . . . . . . . . . . . . . . ")
 print("The quiz has 10 questions about general knowledge ")
-print("-------------------------")
+print(". . . . . . . . . . . . . . . . . . . . . . ")
+print("I hope you will enjoy it:)")
+print(". . . . . . . . . . . . . . . . . . . . . . ")
 
 # Ask if player wants to start game
 
@@ -27,11 +29,11 @@ def start_game():
     question_num = 1
 
     for key in questions:
-        print("-------------------------")
+        print(". . . . . . . . . . . . . . . . . . . . . . ")
         print(key)
         for i in options[question_num-1]:
             print(i)
-        # Verify if the player is choosing a valid reply
+# Verify if the player is choosing a valid reply
         while True:
             reply = input("Choose(A, B, C, or D): \n")
             reply = reply.upper()
@@ -59,7 +61,7 @@ def verify_score(score, reply):
         print("This is wrong answer")
         return 0
 
-# This fucntion will show the correct results and the choices
+# This fucntion will show the players answers and the correct answers
 
 
 def show_score(correct_responses, responses):
