@@ -8,7 +8,7 @@ SCOPE = [
 
 # Welcoming text
    
-print("Welcome to Knowledge Quiz")
+print("Welcome to General Knowledge Quiz")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
 print("The quiz has 10 questions about general knowledge ")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
