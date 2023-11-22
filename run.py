@@ -72,7 +72,7 @@ def start_game():
         correct_responses += verify_score(questions.get(key), reply)
         question_num += 1
 
-    show_score(correct_responses, responses)
+    show_score(correct_responses, responses, questions)
      
 # Verifying if the player gave a corect or incorrect reply
 
@@ -89,15 +89,14 @@ def verify_score(score, reply):
 # This fucntion will show the players answers and the correct answers
 
 
-def show_score(correct_responses, responses):
-
+def show_score(correct_responses, responses, questions):
     print(". . . . . . . . . . . . . . . . . . . . . . ")
     print("                 YOUR SCORE                 ")
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-    percentage = (correct_responses/len(questions)) * 100
+    percentage = (correct_responses / len(questions)) * 100
     print(". . . . . . . . . . . . . . . . . . . . . . ")
-    print(str(players_name)+", you got " + str(percentage) + "% of good answers!")
+    print(str(players_name) + ", you got " + str(percentage) + "% of good answers!")
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
     print("Those are yours replies: ", end="")
