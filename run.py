@@ -1,3 +1,4 @@
+import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -103,33 +104,66 @@ def restart_game():
         else:
             break
 
+# Quiz questions and answers with two levels 
 
-# Quiz questions and answers
+# Difficult questions
 
-questions = {
-    "1: What is the biggest island in the world?": "D",
-    "2: Which gas is the most in the Earth's atmosphere?": "B",
-    "3: Arsonphobia is a fear of:": "C",
-    "4: What is the lifetime of a dragonfly?": "A",
-    "5: Which planet is close to the sun?": "D",
-    "6: What is the name of the god of the seas and oceans in Greek mythology?": "A",
-    "7: How many time zones does Australia have?": "B",
-    "8: What is the name of the largest country in the world?": "C",
-    "9: How many colors does the rainbow have?": "C",
-    "10: What is the chemical symbol of silver?": "D"
-    }
+difficult_questions = {
+    "1. Which ancient wonder was located in Alexandria, Egypt?": "C",
+    "2. What is the currency of Japan?": "C",
+    "3. In computer science, what does the acronym 'SQL' stand for?": "C",
+    "4. Who discovered penicillin?": "A",
+    "5. What is the boiling point of water in Fahrenheit?": "A",
+    "6. What is the smallest prime number?": "C",
+    "7. What is the capital city of Bhutan?": "A",
+    "8. In physics, what is the fundamental force responsible for radioactivity?": "B",
+    "9. Which artist painted 'Starry Night'?": "A",
+    "10. What is the powerhouse of the cell?": "B"
+}
 
+# Difficult answets
 
-options = [["A Madagascar", "B. Java", "C. New Zealand", "D. Greenland"],
-           ["A. Oxygen",  "B. Nitrogen", "C. Carbon dioxide", "D. Ozone"],
-           ["A. Spiders", "B. Water ", "C. Fire", "D. Poison"],
-           ["A. 24 hours", "B. One week", "C. One month", "D. Six months"],
-           ["A. Mars", "B. Venus ", "C. Earth", "D. Mercury"],
-           ["A. Poseidon", "B. Apollo", "C. Zeus", "D. Dionysus"],
-           ["A. 2", "B. 3", "C. 4", "D. 1"],
-           ["A. Canada", "B. USA", "C. Russia", "D. India"],
-           ["A. Five", "B. Six", "C. Seven", "D. Eight"],
-           ["A. Na", "B. Fa", "C. Cu", "D. Ag"]]
+difficult_options = [
+    ["A. Great Wall of China", "B. Hanging Gardens of Babylon", "C. Lighthouse of Alexandria", "D. Colossus of Rhodes"],
+    ["A. Yuan", "B. Won", "C. Yen", "D. Ringgit"],
+    ["A) Structured Question Language", "B) System Query Language", "C) Standard Query Language", "D) Sequential Query Language"],
+    ["A. Alexander Fleming", "B. Louis Pasteur", "C. Joseph Lister", "D. Robert Koch"],
+    ["A. 212°F", "B. 100°F", "C. 180°F", "D. 32°F"],
+    ["A. 0", "B. 1", "C. 2", "D. 3"],
+    ["A. Thimphu", "B. Kathmandu", "C. Dhaka", "D. Colombo"],
+    ["A) Electromagnetic force", "B) Weak nuclear force", "C) Strong nuclear force", "D) Gravitational force"],
+    ["A) Vincent van Gogh", "B) Pablo Picasso", "C) Leonardo da Vinci", "D) Claude Monet"],
+    ["A) Nucleus", "B) Mitochondria", "C) Endoplasmic reticulum", "D) Golgi apparatus"]
+]
+
+# Easy questions
+
+easy_questions = {
+    "1. What is the biggest island in the world?": "D",
+    "2. Which gas is the most in the Earth's atmosphere?": "B",
+    "3. Arsonphobia is a fear of:": "C",
+    "4. What is the lifetime of a dragonfly?": "A",
+    "5. Which planet is close to the sun?": "D",
+    "6. What is the name of the god of the seas and oceans in Greek mythology?": "A",
+    "7. How many time zones does Australia have?": "B",
+    "8. What is the name of the largest country in the world?": "C",
+    "9. How many colors does the rainbow have?": "C",
+    "10. What is the chemical symbol of silver?": "D"
+}
+
+# Easy answers
+
+easy_options = [
+    ["A Madagascar", "B. Java", "C. New Zealand", "D. Greenland"],
+    ["A. Oxygen",  "B. Nitrogen", "C. Carbon dioxide", "D. Ozone"],
+    ["A. Spiders", "B. Water ", "C. Fire", "D. Poison"],
+    ["A. 24 hours", "B. One week", "C. One month", "D. Six months"],
+    ["A. Mars", "B. Venus ", "C. Earth", "D. Mercury"],
+    ["A. Poseidon", "B. Apollo", "C. Zeus", "D. Dionysus"],
+    ["A. 2", "B. 3", "C. 4", "D. 1"],
+    ["A. Canada", "B. USA", "C. Russia", "D. India"],
+    ["A. Five", "B. Six", "C. Seven", "D. Eight"],
+    ["A. Na", "B. Fa", "C. Cu", "D. Ag"]]
 
 start_game()
 
