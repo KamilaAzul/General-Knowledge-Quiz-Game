@@ -23,12 +23,14 @@ players_name = input("Please enter your name: \n")
 print("Hello "+str(players_name)+"", "I wish you the best of luck!\n")
 
 def choose_difficulty_level():
-    while True:
-        level = input("Choose difficulty level (easy or difficult): ").lower()
-        if level in ('easy', 'difficult'):
-            return level
+     while True:
+        print("Which difficulty level you want to play?")
+        level = input("Write (e) for EASY or (d) for DIFFICULT: ").lower()
+        if level in ('easy', 'difficult', 'e', 'd'):
+            return 'easy' if level == 'e' else 'difficult'
         else:
-            print("Invalid choice, please choose either 'easy' or 'difficult'.")
+            print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
+
 
 def start_game():
     responses = []
@@ -37,8 +39,7 @@ def start_game():
 
     # Ask for the difficulty level
     while True:
-        difficulty = input("Choose difficulty level (easy or difficult): \n")
-        difficulty = difficulty.lower()
+        difficulty = choose_difficulty_level()
         if difficulty not in ('easy', 'difficult'):
             print("Invalid choice, the only options are easy or difficult")
         else:
