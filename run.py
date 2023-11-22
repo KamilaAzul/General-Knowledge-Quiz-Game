@@ -22,19 +22,43 @@ players_name = ""
 players_name = input("Please enter your name: \n")
 print("Hello "+str(players_name)+"", "I wish you the best of luck!\n")
 
+def choose_difficulty_level():
+    while True:
+        level = input("Choose difficulty level (easy or difficult): ").lower()
+        if level in ('easy', 'difficult'):
+            return level
+        else:
+            print("Invalid choice, please choose either 'easy' or 'difficult'.")
 
 def start_game():
-
     responses = []
     correct_responses = 0
     question_num = 1
+
+    # Ask for the difficulty level
+    while True:
+        difficulty = input("Choose difficulty level (easy or difficult): \n")
+        difficulty = difficulty.lower()
+        if difficulty not in ('easy', 'difficult'):
+            print("Invalid choice, the only options are easy or difficult")
+        else:
+            break
+
+    # Select questions based on the difficulty level
+    if difficulty == 'easy':
+        questions = easy_questions
+        options = easy_options
+    else:
+        questions = difficult_questions
+        options = difficult_options
 
     for key in questions:
         print(". . . . . . . . . . . . . . . . . . . . . . ")
         print(key)
         for i in options[question_num-1]:
             print(i)
-# Verify if the player is choosing a valid reply
+        
+        # Verify if the player is choosing a valid reply
         while True:
             reply = input("Choose(A, B, C, or D): \n")
             reply = reply.upper()
@@ -48,7 +72,7 @@ def start_game():
         correct_responses += verify_score(questions.get(key), reply)
         question_num += 1
 
-    show_score(correct_responses, responses) 
+    show_score(correct_responses, responses)
      
 # Verifying if the player gave a corect or incorrect reply
 
