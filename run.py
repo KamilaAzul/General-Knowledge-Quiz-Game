@@ -1,6 +1,7 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -41,6 +42,18 @@ def update_leaderboard(player_name, score, responses, difficulty):
         leaderboard.update_acell('C1', 'Responses')
 
     leaderboard.append_row([player_name, score, ', '.join(responses)])
+
+def print_leaderboard(difficulty):
+    try:
+        leaderboard = SHEET.worksheet(f'leaderboard_{difficulty.lower()}')
+        # Skip the header row
+        data = leaderboard.get_all_values()[1:] 
+         # Sort by score in descending order
+        data.sort(key=lambda x: int(x[1]), reverse=True) 
+        # Print the leaderboard in a tabular format
+        print(tabulate(data[:10], headers=['Player Name', 'Score']))
+    except gspread.WorksheetNotFound:
+        print("Leaderboard not available for this difficulty.")
 
 # User can choose the level of dificulty
 def choose_difficulty_level():
@@ -101,6 +114,9 @@ def start_game():
 
     # Update the leaderboard
     update_leaderboard(players_name, score, responses, difficulty)
+
+    # Printing the leaderboard
+    print_leaderboard(difficulty)
 
     return score  # Return the score
 
