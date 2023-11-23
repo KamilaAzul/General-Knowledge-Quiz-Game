@@ -43,15 +43,20 @@ def update_leaderboard(player_name, score, responses, difficulty):
 
     leaderboard.append_row([player_name, score, ', '.join(responses)])
 
+# Print the leaderboard 
 def print_leaderboard(difficulty):
     try:
         leaderboard = SHEET.worksheet(f'leaderboard_{difficulty.lower()}')
         # Skip the header row
         data = leaderboard.get_all_values()[1:] 
-         # Sort by score in descending order
+        # Sort by score in descending order
         data.sort(key=lambda x: int(x[1]), reverse=True) 
+
+        # Extract only the player's name and score from the data
+        simplified_data = [[row[0], row[1]] for row in data]
+
         # Print the leaderboard in a tabular format
-        print(tabulate(data[:10], headers=['Player Name', 'Score']))
+        print(tabulate(simplified_data[:10], headers=['Player Name', 'Score']))
     except gspread.WorksheetNotFound:
         print("Leaderboard not available for this difficulty.")
 
