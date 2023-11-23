@@ -15,16 +15,16 @@
 			"thread": "",
 			"mode": "release",
 			"overload": 0,
-			"date": "2023-11-22T14:09:01.043Z",
-			"memory": 11.02,
-			"rm": 1,
+			"date": "2023-11-22T15:14:01.196Z",
+			"memory": 11.15,
+			"rm": 0,
 			"fm": 0,
-			"wm": 47,
+			"wm": 0,
 			"em": 0,
 			"mm": 0,
 			"om": 0,
 			"dm": 0,
-			"um": 0.004,
+			"um": 0,
 			"pm": 0,
 			"sm": 0,
 			"cm": 0,
@@ -36,10 +36,10 @@
 			"external": 0,
 			"errors": 0,
 			"timeouts": 0,
-			"online": 1,
-			"uptime": 255,
+			"online": 0,
+			"uptime": 320,
 			"download": 0,
-			"upload": 0.133
+			"upload": 0.136
 		}
 	]
 }
