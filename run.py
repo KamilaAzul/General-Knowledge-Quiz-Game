@@ -6,19 +6,15 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('knowledge_quiz')
 
-leaderboard = SHEET.worksheet('leaderboard')
-
-data = leaderboard.get_all_values()
-
 # Welcoming text
-   
+
 print("Welcome to General Knowledge Quiz")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
 print("The quiz has 10 questions about general knowledge ")
@@ -26,12 +22,27 @@ print(". . . . . . . . . . . . . . . . . . . . . . ")
 print("I hope you will enjoy it:)")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-# Ask if player wants to start game
+# Ask if the player wants to start the game
 
 players_name = ""
 players_name = input("Please enter your name: \n")
-print("Hello "+str(players_name)+"", "I wish you the best of luck!\n")
+print("Hello " + str(players_name) + "", "I wish you the best of luck!\n")
 
+# Update the details of leaderboard
+def update_leaderboard(player_name, score, responses, difficulty):
+    sheet_name = f'leaderboard_{difficulty.lower()}'
+    try:
+        leaderboard = SHEET.worksheet(sheet_name)
+    except gspread.WorksheetNotFound:
+        # Create the sheet if it doesn't exist
+        leaderboard = SHEET.add_worksheet(sheet_name, 1, 3)
+        leaderboard.update_acell('A1', 'Player Name')
+        leaderboard.update_acell('B1', 'Score')
+        leaderboard.update_acell('C1', 'Responses')
+
+    leaderboard.append_row([player_name, score, ', '.join(responses)])
+
+# User can choose the level of dificulty
 def choose_difficulty_level():
      while True:
         print("Which difficulty level you want to play?")
@@ -41,7 +52,7 @@ def choose_difficulty_level():
         else:
             print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
 
-
+# Starting the game
 def start_game():
     responses = []
     correct_responses = 0
@@ -66,12 +77,12 @@ def start_game():
     for key in questions:
         print(". . . . . . . . . . . . . . . . . . . . . . ")
         print(key)
-        for i in options[question_num-1]:
+        for i in options[question_num - 1]:
             print(i)
-        
+
         # Verify if the player is choosing a valid reply
         while True:
-            reply = input("Choose(A, B, C, or D): \n")
+            reply = input("Choose (A, B, C, or D): \n")
             reply = reply.upper()
             if reply not in ('A', 'B', 'C', 'D'):
                 print("Wrong choice, the only options are A, B, C, or D")
@@ -83,24 +94,27 @@ def start_game():
         correct_responses += verify_score(questions.get(key), reply)
         question_num += 1
 
-    show_score(correct_responses, responses, questions)
-     
-# Verifying if the player gave a corect or incorrect reply
+    # Assign correct_responses to score
+    score = correct_responses
 
+    show_score(correct_responses, responses, questions, difficulty)
 
+    # Update the leaderboard
+    update_leaderboard(players_name, score, responses, difficulty)
+
+    return score  # Return the score
+
+# Verifying if the player gave a correct or incorrect reply
 def verify_score(score, reply):
-
     if reply == score:
         print(" Good answer")
         return 1
     else:
-        print("This is wrong answer")
+        print("This is the wrong answer")
         return 0
 
-# This fucntion will show the players answers and the correct answers
-
-
-def show_score(correct_responses, responses, questions):
+# This function will show the players' answers and the correct answers
+def show_score(correct_responses, responses, questions, difficulty):
     print(". . . . . . . . . . . . . . . . . . . . . . ")
     print("                 YOUR SCORE                 ")
     print(". . . . . . . . . . . . . . . . . . . . . . ")
@@ -110,26 +124,22 @@ def show_score(correct_responses, responses, questions):
     print(str(players_name) + ", you got " + str(percentage) + "% of good answers!")
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-    print("Those are yours replies: ", end="")
+    print("These are your replies: ", end="")
     for i in responses:
         print(i, end=" ")
     print()
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-    print("Those are correct ones: ", end="")
+    print("These are the correct ones: ", end="")
     for i in questions:
         print(questions.get(i), end=" ")
     print()
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
-
-    
-# This fucntion is asking the user if he wants to try again or end the game
-
-
+# This function is asking the user if he wants to try again or end the game
 def restart_game():
     while True:
-        response = input(str(players_name)+", would you like to try play one more time? (yes or no): \n")
+        response = input(str(players_name) + ", would you like to try play one more time? (yes or no): \n")
         response = response.upper()
         if response not in ('YES', 'NO'):
             print("Invalid choice, the only options are YES or NO")
