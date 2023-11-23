@@ -2,12 +2,22 @@ import random
 import gspread
 from google.oauth2.service_account import Credentials
 from tabulate import tabulate
+from colored import fg, attr
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
 ]
+
+# Colour variables
+GR = fg("dark_olive_green_2")
+RD = fg("light_red")
+GD = fg("gold_3a")
+YL = fg("light_yellow")
+BL = fg("turquoise_2")
+R = attr("reset")
+
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -16,7 +26,7 @@ SHEET = GSPREAD_CLIENT.open('knowledge_quiz')
 
 # Welcoming text
 
-print("Welcome to General Knowledge Quiz")
+print(GR + "Welcome to General Knowledge Quiz" + R)
 print(". . . . . . . . . . . . . . . . . . . . . . ")
 print("The quiz has 10 questions about general knowledge ")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
@@ -56,9 +66,9 @@ def print_leaderboard(difficulty):
         simplified_data = [[row[0], row[1]] for row in data]
 
         # Print the leaderboard in a tabular format
-        print(tabulate(simplified_data[:10], headers=['Player Name', 'Score']))
+        print(GD + tabulate(simplified_data[:10], headers=['Player Name', 'Score']) + R)
     except gspread.WorksheetNotFound:
-        print("Leaderboard not available for this difficulty.")
+        print(RD + "Leaderboard not available for this difficulty." + R)
 
 # User can choose the level of dificulty
 def choose_difficulty_level():
@@ -94,7 +104,7 @@ def start_game():
 
     for key in questions:
         print(". . . . . . . . . . . . . . . . . . . . . . ")
-        print(key)
+        print(BL + key + R)
         for i in options[question_num - 1]:
             print(i)
 
@@ -103,7 +113,7 @@ def start_game():
             reply = input("Choose (A, B, C, or D): \n")
             reply = reply.upper()
             if reply not in ('A', 'B', 'C', 'D'):
-                print("Wrong choice, the only options are A, B, C, or D")
+                print(RD + "Wrong choice, the only options are A, B, C, or D" + R)
             else:
                 break
 
@@ -128,10 +138,10 @@ def start_game():
 # Verifying if the player gave a correct or incorrect reply
 def verify_score(score, reply):
     if reply == score:
-        print(" Good answer")
+        print(GD + " Good answer" + R)
         return 1
     else:
-        print("This is the wrong answer")
+        print(RD + "This is the wrong answer" + R)
         return 0
 
 # This function will show the players' answers and the correct answers
