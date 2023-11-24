@@ -62,7 +62,7 @@ def print_leaderboard(difficulty):
         # Sort by score in descending order
         data.sort(key=lambda x: int(x[1]), reverse=True) 
 
-        # Extract only the player's name and score from the data
+        # Shows the player's name and score from the data
         simplified_data = [[row[0], row[1]] for row in data]
 
         # Print the leaderboard in a tabular format
@@ -147,23 +147,23 @@ def verify_score(score, reply):
 # This function will show the players' answers and the correct answers
 def show_score(correct_responses, responses, questions, difficulty):
     print(". . . . . . . . . . . . . . . . . . . . . . ")
-    print("                 YOUR SCORE                 ")
+    print(BL + f"                 YOUR SCORE - {players_name}                 " + R)
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
     percentage = (correct_responses / len(questions)) * 100
     print(". . . . . . . . . . . . . . . . . . . . . . ")
-    print(str(players_name) + ", you got " + str(percentage) + "% of good answers!")
+    print(GR + f"{players_name}, you got {percentage}% of good answers!" + R)
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
     print("These are your replies: ", end="")
     for i in responses:
-        print(i, end=" ")
+        print(GD + i + " " + R, end="")
     print()
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
     print("These are the correct ones: ", end="")
-    for i in questions:
-        print(questions.get(i), end=" ")
+    for i in questions.values():
+        print(YL + i + " " + R, end="")
     print()
     print(". . . . . . . . . . . . . . . . . . . . . . ")
 
