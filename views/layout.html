@@ -223,10 +223,13 @@
         }
         
     </style>
+      <script>
+        // Add an event listener for 'touchmove' with passive option
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('touchmove', function(event) {
+            }, { passive: true });
+        });
+    </script>
 </head>
-
-
 @{body}
-
-
 </html>
