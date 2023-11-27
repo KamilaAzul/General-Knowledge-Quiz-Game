@@ -45,46 +45,6 @@ players_name = ""
 players_name = input("Please enter your name: \n")
 print("Hello " + str(players_name) + "", "I wish you the best of luck!\n")
 
-# Update the details of leaderboard
-def update_leaderboard(player_name, score, responses, difficulty):
-    sheet_name = f'leaderboard_{difficulty.lower()}'
-    try:
-        leaderboard = SHEET.worksheet(sheet_name)
-    except gspread.WorksheetNotFound:
-        # Create the sheet if it doesn't exist
-        leaderboard = SHEET.add_worksheet(sheet_name, 1, 3)
-        leaderboard.update_acell('A1', 'Player Name')
-        leaderboard.update_acell('B1', 'Score')
-        leaderboard.update_acell('C1', 'Responses')
-
-    leaderboard.append_row([player_name, score, ', '.join(responses)])
-
-# Print the leaderboard 
-def print_leaderboard(difficulty):
-    try:
-        leaderboard = SHEET.worksheet(f'leaderboard_{difficulty.lower()}')
-        # Skip the header row
-        data = leaderboard.get_all_values()[1:] 
-        # Sort by score in descending order
-        data.sort(key=lambda x: int(x[1]), reverse=True) 
-
-        # Shows the player's name and score from the data
-        simplified_data = [[row[0], row[1]] for row in data]
-
-        # Print the leaderboard in a tabular format
-        print(GD + tabulate(simplified_data[:10], headers=['Player Name', 'Score']) + R)
-    except gspread.WorksheetNotFound:
-        print(RD + "Leaderboard not available for this difficulty." + R)
-
-# User can choose the level of dificulty
-def choose_difficulty_level():
-     while True:
-        print("Which difficulty level you want to play?")
-        level = input("Write (e) for EASY or (d) for DIFFICULT: ").lower()
-        if level in ('easy', 'difficult', 'e', 'd'):
-            return 'easy' if level == 'e' else 'difficult'
-        else:
-            print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
 
 # Starting the game
 def start_game():
@@ -172,6 +132,48 @@ def show_score(correct_responses, responses, questions, difficulty):
         print(YL + i + " " + R, end="")
     print()
     print(". . . . . . . . . . . . . . . . . . . . . . ")
+
+# Update the details of leaderboard
+def update_leaderboard(player_name, score, responses, difficulty):
+    sheet_name = f'leaderboard_{difficulty.lower()}'
+    try:
+        leaderboard = SHEET.worksheet(sheet_name)
+    except gspread.WorksheetNotFound:
+        # Create the sheet if it doesn't exist
+        leaderboard = SHEET.add_worksheet(sheet_name, 1, 3)
+        leaderboard.update_acell('A1', 'Player Name')
+        leaderboard.update_acell('B1', 'Score')
+        leaderboard.update_acell('C1', 'Responses')
+
+    leaderboard.append_row([player_name, score, ', '.join(responses)])
+
+# Print the leaderboard 
+def print_leaderboard(difficulty):
+    try:
+        leaderboard = SHEET.worksheet(f'leaderboard_{difficulty.lower()}')
+        # Skip the header row
+        data = leaderboard.get_all_values()[1:] 
+        # Sort by score in descending order
+        data.sort(key=lambda x: int(x[1]), reverse=True) 
+
+        # Shows the player's name and score from the data
+        simplified_data = [[row[0], row[1]] for row in data]
+
+        # Print the leaderboard in a tabular format
+        print(GD + tabulate(simplified_data[:10], headers=['Player Name', 'Score']) + R)
+    except gspread.WorksheetNotFound:
+        print(RD + "Leaderboard not available for this difficulty." + R)
+
+# User can choose the level of dificulty
+def choose_difficulty_level():
+     while True:
+        print("Which difficulty level you want to play?")
+        level = input("Write (e) for EASY or (d) for DIFFICULT: ").lower()
+        if level in ('easy', 'difficult', 'e', 'd'):
+            return 'easy' if level == 'e' else 'difficult'
+        else:
+            print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
+
 
 # This function is asking the user if he wants to try again or end the game
 def restart_game():
