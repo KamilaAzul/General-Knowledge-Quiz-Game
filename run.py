@@ -42,9 +42,18 @@ print(". . . . . . . . . . . . . . . . . . . . . . ")
 # Ask if the player wants to start the game
 
 players_name = ""
-players_name = input("Please enter your name: \n")
-print("Hello " + str(players_name) + "", "I wish you the best of luck!\n")
+players_name = input( GR + "Please enter your name: \n" + R)
+print(YL + "Hello " + str(players_name) + "", "I wish you the best of luck!\n" + R)
 
+# User can choose the level of dificulty
+def choose_difficulty_level():
+     while True:
+        print(GR + "Which difficulty level you want to play?" + R)
+        level = input("Write (e) for EASY or (d) for DIFFICULT: ").lower()
+        if level in ('easy', 'difficult', 'e', 'd'):
+            return 'easy' if level == 'e' else 'difficult'
+        else:
+            print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
 
 # Starting the game
 def start_game():
@@ -56,7 +65,7 @@ def start_game():
     while True:
         difficulty = choose_difficulty_level()
         if difficulty not in ('easy', 'difficult'):
-            print("Invalid choice, the only options are easy or difficult")
+            print(RD +  "Invalid choice, the only options are easy or difficult" + R)
         else:
             break
 
@@ -99,9 +108,10 @@ def start_game():
     # Printing the leaderboard
     print_leaderboard(difficulty)
 
-    return score  # Return the score
+    # Return the score
+    return score  
 
-# Verifying if the player gave a correct or incorrect reply
+# Verifying if reply is correct or incorrect 
 def verify_score(score, reply):
     if reply == score:
         print(GD + " Good answer" + R)
@@ -110,7 +120,7 @@ def verify_score(score, reply):
         print(RD + "This is the wrong answer" + R)
         return 0
 
-# This function will show the players' answers and the correct answers
+# Showing the players' answers and the correct answers
 def show_score(correct_responses, responses, questions, difficulty):
     print(". . . . . . . . . . . . . . . . . . . . . . ")
     print(BL + f"                 YOUR SCORE - {players_name}                 " + R)
@@ -163,17 +173,6 @@ def print_leaderboard(difficulty):
         print(GD + tabulate(simplified_data[:10], headers=['Player Name', 'Score']) + R)
     except gspread.WorksheetNotFound:
         print(RD + "Leaderboard not available for this difficulty." + R)
-
-# User can choose the level of dificulty
-def choose_difficulty_level():
-     while True:
-        print("Which difficulty level you want to play?")
-        level = input("Write (e) for EASY or (d) for DIFFICULT: ").lower()
-        if level in ('easy', 'difficult', 'e', 'd'):
-            return 'easy' if level == 'e' else 'difficult'
-        else:
-            print("Invalid choice, please choose either 'easy' or 'difficult' (or 'e' or 'd').")
-
 
 # This function is asking the user if he wants to try again or end the game
 def restart_game():
