@@ -19,7 +19,14 @@ BL = fg("turquoise_2")
 R = attr("reset")
 
 
-CREDS = Credentials.from_service_account_file('creds.json')
+if os.environ.get('CREDS'):
+    CREDS = Credentials.from_service_account_info(json.loads(os.environ.get('CREDS')))
+else:
+    CREDS = Credentials.from_service_account_file('creds.json')
+    
+else:
+    CREDS = Credentials.from_service_account_file('creds.json')
+    
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('knowledge_quiz')
