@@ -1,10 +1,10 @@
-import random
-import gspread
-from google.oauth2.service_account import Credentials
-from tabulate import tabulate
-from colored import fg, attr
 import os
 import json
+import random
+from colored import fg, attr
+from google.oauth2.service_account import Credentials
+import gspread
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -186,10 +186,9 @@ def restart_game():
         else:
             break
 
+
 # Quiz questions and answers with two levels 
-
 # Difficult questions
-
 difficult_questions = {
     "1. Which ancient wonder was located in Alexandria, Egypt?": "C",
     "2. What is the currency of Japan?": "C",
@@ -252,4 +251,5 @@ start_game()
 while restart_game():
    start_game()
 
-print("Thank you for playing! Byeee:)")
+print(YL + "Thank you for playing " + str(players_name) + "! Hope to see you soon:)" + R)
+

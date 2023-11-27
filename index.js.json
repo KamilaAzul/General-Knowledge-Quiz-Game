@@ -15,8 +15,8 @@
 			"thread": "",
 			"mode": "release",
 			"overload": 0,
-			"date": "2023-11-27T11:13:18.412Z",
-			"memory": 9.44,
+			"date": "2023-11-27T14:32:18.943Z",
+			"memory": 9.64,
 			"rm": 0,
 			"fm": 0,
 			"wm": 0,
@@ -36,8 +36,8 @@
 			"external": 0,
 			"errors": 0,
 			"timeouts": 0,
-			"online": 2,
-			"uptime": 8,
+			"online": 0,
+			"uptime": 207,
 			"download": 0,
 			"upload": 0.007
 		}

@@ -17,7 +17,7 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 # Contents
 
 * [**User Experience UX**](<#user-experience-ux>)
-    * [UX Strategy](<#ux-strategy>)
+    * [The Business Goals of the Website](<#business-goal>)
     * [User Stories](<#user-stories>)
 * [**Features**](<#features>)
     * [Quiz Flow](<#quiz-flow>)
@@ -30,36 +30,40 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 
 ## User Experience UX
 
-## UX Strategy
+I decided to use a background related to the theme of the game, which makes the quiz visually more pleasant to use.
 
-Game is designed using Python default view in black screen.
+<br>
+### The Business Goal of the Website:
 
+- Websie has no commercial goals. The site's goal is to provide an interactive quiz game to the users.
+  
 <br/> 
 
 ## User Stories
 
- * As a user I want to understand how to play the game.
-   * Quiz is very simple to understand. Instruction about the choices is given to the player.
- * As a user I want to play the game.
-   * Quiz works with no problems.
- * As a user I want to see if my answer was correct.
-   * After answering, the player can see whether his answer was correct or not.
- * As a user I want at the end of the game see my score.
-   * After the last answer is given, the player's final score will be displayed.
- * As a user I want to have the possibility to play one more time.
-   * After answering all the answers, the player has the option to start the game again.
+* As a user I want to understand how to play the game.
+* As a user I want to choose the game difficulty level.
+* As a user I want to play the game.
+* As a user I want to see if my answer was correct.
+* As a user I want at the end of the game see my score and the other users.
+* Someone wants to be able to see the correct answers.
+* As a user I want to have the possibility to play one more time.
 
 [Back to top](<#contents>)
 
 ## Features
 
-  * User is welcome with the short welcoming message,
-  * User is asked to put the name,
-  * User is greeting “Good Luck” message,
-  * The quiz starts and the user will see after giving the answer if it was right or wrong,
-  * If the answer is anything other (A, B,C or D)will be given, a while loop has been implemented that keeps asking the player to enter the correct input'
-  * After giving all the answers the user will see obtained score together with all correct answers,
-  * Once the game is completed a user will have an option to play one more time or to quit.
+* User is welcome with the short welcoming message and short quiz instructions.
+* User is asked to put the name.
+* The user is asked what difficulty level he wants to choose.
+* User is greeting “Good Luck” message,
+* The quiz starts and the user can choose the answer A, B, C or D.
+* If the answer is anything else (A, B,C or D)will be given, the user will see this message: "Wrong choice, the only options are A, B, C, or D"
+* After answering, the user can see whether the answer was correct or wrong.
+* After providing all the answers, the user can see his/her result.
+* The user can see his/her answers and compare them with the correct answers
+* The user can see the leaderboard with the top ten results.
+* Once the game is completed a user will have an option to play one more time or to quit.
 
 ## Quiz Flow
 
@@ -76,20 +80,33 @@ The flowchart shows the entire cycle of the game and the planning process.
 - [GitHub](https://github.com) used for secure online code storage.
 - [Gitpod](https://gitpod.io) is used as a cloud-based for game development.
 - [Heroku](https://www.heroku.com) used for hosting the deployed back-end site.
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/CSS)
 
 [Back to top](<#contents>)
 
-## Classes & Functions
+## Functions
+
+* The script includes some setup code at the beginning, such as importing necessary modules, setting up Google Sheets API credentials, and printing a welcome message. It uses the gspread library to interact with Google Sheets for leaderboard functionality. Additionally, it uses the colored and tabulate libraries for colorful console output and tabulating leaderboard data.
+
+* The script defines two sets of questions and answers for easy and difficult levels. The questions are stored in dictionaries, and the corresponding answer choices are stored in lists.
+
+* 
 
 The primary functions used on this application are:
 
 - `def start_game()`
-* Starts the game, shows questions and answer options and checks player inputs. 
+* This function initiates the quiz game. It begins by asking the user to choose a difficulty level using `choose_difficulty_level()`.  It presents questions depending on the chosen difficulty level, make validation of the user's responses, it calculates the score, and updates the leaderboard. Function displays the user's score, responses, correct answers, and the leaderboard.
 - `def verify_score()` 
 * Verifies how many correct answers the player got.
-- `def  show_scoree()` 
+verify_score(score, reply): This function takes a correct answer and the user's response as input, compares them, and returns 1 if the response is correct and 0 otherwise. It also provides feedback to the user about the correctness of their response.
+- `def show_scoree()` 
 * Shows the score for the player together with the correct answers.
+show_score(correct_responses, responses, questions, difficulty): This function displays the user's score, percentage of correct answers, the user's responses, and the correct answers after completing the quiz.
+- `def update_leaderboard(player_name, score, responses, difficulty)`  This function updates the leaderboard with the player's name, score, and responses. 
+-`def print_leaderboard(difficulty)` This function prints the leaderboard for the specified difficulty level. It prints the top 10 players with their scores.
 - `def restart_game()` 
+: This function asks the user if they want to play again. If the response is 'YES', it returns True, allowing the game to restart. Otherwise, it breaks out of the loop, ending the game.
 * Gives the player the option to restart the game.
 
 ![Alt text](<assets/One more time.png>)
@@ -97,19 +114,37 @@ The primary functions used on this application are:
 
 ### Future Features possible to implement:
 
-* Registration and Login- creating an account will allow user to track past scores and games.
-* Select Level of Difficulty 
 * Game Progression- adding more question, creating different levels of difficulty.
 
 [Back to top](<#contents>)
 
 ## Testing
 
-I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) as recommended.
+I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) as recommended and as well with [Python Checker](https://www.pythonchecker.com/).
 
 ![Alt text](assets/pep8ci.png)
 
+
+
 [Back to top](<#contents>)
+
+## User stories testing:
+
+* As a user I want to understand how to play the game.
+    * Quiz is very simple to understand. Instruction about the choices is given to the player.
+* As a user I want to choose the game difficulty level.
+   * User can choose easy or difficult game level.
+* As a user I want to play the game.
+    * Quiz works with no problems.
+* As a user I want to see if my answer was correct.
+    * After answering, the player can see whether his answer is correct or not.
+* As a user I want at the end of the game see my score and the other users.
+    * After the last answer is given, the player's final score will be displayed in a table, together with the scores of the other best users.
+* Someone wants to be able to see the correct answers.
+    * At the end of the game, the user can see his/her answers and compare them with the correct answers.
+* As a user I want to have the possibility to play one more time.
+    * After answering all the answers, the player has the option to start the game again.
+
 
 ## Lighthouse validation
 
