@@ -34,9 +34,15 @@ SHEET = GSPREAD_CLIENT.open('knowledge_quiz')
 
 print(GR + "Welcome to General Knowledge Quiz" + R)
 print(". . . . . . . . . . . . . . . . . . . . . . ")
-print("The quiz has 10 questions about general knowledge ")
+print("The quiz has 10 questions about general knowledge. ")
 print(". . . . . . . . . . . . . . . . . . . . . . ")
-print("I hope you will enjoy it:)")
+print("The game has two levels of difficulty.")
+print("You can choose "easy" or "difficult" levels.")
+print("There are 4 possible answers to each question. ")
+print("You can choose A,B, C or D. ")
+print("At the end of the game you can see the correct answers and compare them with the answers you gave.")
+print(". . . . . . . . . . . . . . . . . . . . . . ")
+print(BL + "I hope you will enjoy it:)"+ R)
 print(". . . . . . . . . . . . . . . . . . . . . . ")
 
 # Ask if the player wants to start the game

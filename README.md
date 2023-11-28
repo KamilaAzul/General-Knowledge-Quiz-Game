@@ -6,7 +6,7 @@
 
 My third project is a General Knowledge Quiz. It's a small game for people who have the willingness to learn new things and like to test their knowledge.
 
-<br/>![Alt text](assets/Game1.png)
+<br/>![Quiz](assets/quiz.png)
 
 [Visit the General Knowledge Quiz](https://general-knowledge-quiz-game-eabd9d6363af.herokuapp.com/)  
 
@@ -22,7 +22,7 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 * [**Features**](<#features>)
     * [Quiz Flow](<#quiz-flow>)
 * [**Technologies Used**](<#technologies-used>)
-    * [Classes&Functions](<#classes&functions>)
+    * [Functions](<#classes&functions>)
 * [**Testing**](<#testing>)
 * [**Deployment**](<#deployment>)
 * [**Credits**](<#credits>)
@@ -71,9 +71,6 @@ The flowchart shows the entire cycle of the game and the planning process.
 
 ![Game Flow](<assets/Games starts.png>)
 
- ### Student Template
- This Template has been provided by the Code Institute and has been used within this quiz. 
-
 ## Technologies Used
 
 - [Python](https://www.python.org) is used as the back-end programming language.
@@ -91,25 +88,26 @@ The flowchart shows the entire cycle of the game and the planning process.
 
 * The script defines two sets of questions and answers for easy and difficult levels. The questions are stored in dictionaries, and the corresponding answer choices are stored in lists.
 
-* 
-
-The primary functions used on this application are:
+### The primary functions used on this application are:
 
 - `def start_game()`
-* This function initiates the quiz game. It begins by asking the user to choose a difficulty level using `choose_difficulty_level()`.  It presents questions depending on the chosen difficulty level, make validation of the user's responses, it calculates the score, and updates the leaderboard. Function displays the user's score, responses, correct answers, and the leaderboard.
-- `def verify_score()` 
-* Verifies how many correct answers the player got.
-verify_score(score, reply): This function takes a correct answer and the user's response as input, compares them, and returns 1 if the response is correct and 0 otherwise. It also provides feedback to the user about the correctness of their response.
-- `def show_scoree()` 
-* Shows the score for the player together with the correct answers.
-show_score(correct_responses, responses, questions, difficulty): This function displays the user's score, percentage of correct answers, the user's responses, and the correct answers after completing the quiz.
-- `def update_leaderboard(player_name, score, responses, difficulty)`  This function updates the leaderboard with the player's name, score, and responses. 
--`def print_leaderboard(difficulty)` This function prints the leaderboard for the specified difficulty level. It prints the top 10 players with their scores.
-- `def restart_game()` 
-: This function asks the user if they want to play again. If the response is 'YES', it returns True, allowing the game to restart. Otherwise, it breaks out of the loop, ending the game.
-* Gives the player the option to restart the game.
+This function initiates the quiz game. It begins by asking the user to choose a difficulty level using `choose_difficulty_level()`.  It presents questions depending on the chosen difficulty level, make validation of the user's responses, it calculates the score, and updates the leaderboard. Function displays the user's score, responses, correct answers, and the leaderboard.
+![Alt text](<assets/askingNameLevel.png>)
+- `verify_score(score, reply)` 
+This function check a correct answer and the user's response, returns 1 if the response is correct and 0 otherwise. It also provides feedback to the user about the correctness of their response.
+![Alt text](<assets/wrongAnswer.png>)
+- `show_score(correct_responses, responses, questions, difficulty)` 
+This function shows the user's score, percentage of correct answers, the user's responses, and the correct answers after completing the quiz.
+- `def update_leaderboard(player_name, score, responses, difficulty)`  
+This function updates the leaderboard with the player's name, score, and responses. 
+- `def print_leaderboard(difficulty)` This function prints the leaderboard for the specified difficulty level. It prints the top 10 players with their scores.
 
-![Alt text](<assets/One more time.png>)
+![Alt text](<assets/Score.png>)
+
+- `def restart_game()` 
+This function asks the user if they want to play again. If the response is 'YES', it returns True, allowing the game to restart. Otherwise, it breaks out of the loop, ending the game.
+
+
 [Back to top](<#contents>)
 
 ### Future Features possible to implement:
@@ -118,12 +116,15 @@ show_score(correct_responses, responses, questions, difficulty): This function d
 
 [Back to top](<#contents>)
 
-## Testing
+# Testing
 
-I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) as recommended and as well with [Python Checker](https://www.pythonchecker.com/).
+I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) and as well with [Python Checker](https://www.pythonchecker.com/).
 
-![Alt text](assets/pep8ci.png)
+![CI Python Linter](assets/pep8ciTesting.png)
 
+<br>
+
+![Python Checker](assets/testing.png)
 
 
 [Back to top](<#contents>)
