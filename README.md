@@ -33,6 +33,7 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 I decided to use a background related to the theme of the game, which makes the quiz visually more pleasant to use.
 
 <br>
+
 ### The Business Goal of the Website:
 
 - Websie has no commercial goals. The site's goal is to provide an interactive quiz game to the users.
@@ -55,8 +56,8 @@ I decided to use a background related to the theme of the game, which makes the 
 
 * User is welcome with the short welcoming message and short quiz instructions.
 * User is asked to put the name.
-* The user is asked what difficulty level he wants to choose.
 * User is greeting “Good Luck” message,
+* The user is asked what difficulty level he wants to choose.
 * The quiz starts and the user can choose the answer A, B, C or D.
 * If the answer is anything else (A, B,C or D)will be given, the user will see this message: "Wrong choice, the only options are A, B, C, or D"
 * After answering, the user can see whether the answer was correct or wrong.
