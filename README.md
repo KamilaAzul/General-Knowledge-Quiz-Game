@@ -190,21 +190,6 @@ I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) and as w
 I managed to fix some of those errors but ate the end there are still some "line too long" and "trailing whitespace".
 They have no impact on the operation of the code.
 
-Final result:
-
-* 23: E501 line too long (86 > 79 characters)
-40: E501 line too long (108 > 79 characters)
-48: E501 line too long (83 > 79 characters)
-59: E501 line too long (96 > 79 characters)
-60: W293 blank line contains whitespace
-61: W293 blank line contains whitespace
-72: E501 line too long (84 > 79 characters)
-95: E501 line too long (82 > 79 characters)
-116: W291 trailing whitespace
-119: W291 trailing whitespace
-132: E501 line too long (84 > 79 characters)
-168: W291 trailing whitespace
-173: W292 no newline at end of file
 <br>
 
 ![Python Checker](assets/testing.png)
