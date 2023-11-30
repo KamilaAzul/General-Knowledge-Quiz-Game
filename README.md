@@ -5,6 +5,7 @@
 ## Introduction <a name="introduction"></a>  
 
 My third project is a General Knowledge Quiz. It's a small game for people who have the willingness to learn new things and like to test their knowledge.
+The script interacts with a Google Sheet to store and display leaderboard data. The game includes questions of varying difficulty levels, and the player's responses are scored and displayed along with correct answers at the end of the game.
 
 <br/>![Quiz](assets/quiz.png)
 
@@ -31,6 +32,7 @@ My third project is a General Knowledge Quiz. It's a small game for people who h
 ## User Experience UX
 
 I decided to use a background related to the theme of the game, which makes the quiz visually more pleasant to use.
+
 
 <br>
 
@@ -66,11 +68,14 @@ I decided to use a background related to the theme of the game, which makes the 
 * The user can see the leaderboard with the top ten results.
 * Once the game is completed a user will have an option to play one more time or to quit.
 
+**Use of Colours**
+
+- Colours have been utilise to make the questions and answers more legible and the correct and incorrect answer announcements more interesting.
+
 ## Quiz Flow
 
 The flowchart shows the entire cycle of the game and the planning process.
 
-![Game Flow](<assets/Games starts.png>)
 
 ## Technologies Used
 
@@ -108,12 +113,32 @@ This function updates the leaderboard with the player's name, score, and respons
 - `def restart_game()` 
 This function asks the user if they want to play again. If the response is 'YES', it returns True, allowing the game to restart. Otherwise, it breaks out of the loop, ending the game.
 
-
 [Back to top](<#contents>)
+
+### Imports
+
+I've used the following Python packages and/or external imported packages.
+
+
+- `os`: it's used to access environment variables using os.environ.get
+- `json`: it's used to load JSON data from the environment variable 'CREDS'
+- `colored`: a third-party library for adding color to text in the console. It's used here to set color variables for text output.
+- `google.oauth2.service_account`: part of the Google API Python client library. It's used for handling Google service account credentials.
+- `gspread`: it's a Python wrapper for the Google Sheets API. It's used to interact with Google Sheets.
+- `tabulate`: it's a third-party library for creating ASCII tables from data. It's used to format and display the leaderboard.
+ 
+- `SCOPE` containing URLs for different Google API scopes, and it sets up color variables using the colored library.
+
+* The script checks if the 'CREDS' environment variable is set. If it is, it loads the Google service account credentials from the environment variable. Otherwise, it loads them from a file named 'creds.json'.
+
+* The script initializes a Google Sheets client (GSPREAD_CLIENT) and opens a Google Sheet named 'knowledge_quiz'.
+
+* The script then prints a welcome message and asks the user for their name.
+
 
 ### Future Features possible to implement:
 
-* Game Progression- adding more question, creating different levels of difficulty.
+* Game Progression- adding more question, creating more levels of difficulty and different fields of knowledge.
 
 [Back to top](<#contents>)
 
@@ -123,6 +148,63 @@ I tested my project on [CI Python Linter](https://pep8ci.herokuapp.com) and as w
 
 ![CI Python Linter](assets/pep8ciTesting.png)
 
+* 25: E501 line too long (86 > 79 characters)
+43: E501 line too long (107 > 79 characters)
+45: E225 missing whitespace around operator
+51: E201 whitespace after '('
+52: E501 line too long (83 > 79 characters)
+55: E302 expected 2 blank lines, found 1
+56: E111 indentation is not a multiple of 4
+56: E117 over-indented
+62: E501 line too long (96 > 79 characters)
+65: E302 expected 2 blank lines, found 1
+74: E222 multiple spaces after operator
+74: E501 line too long (85 > 79 characters)
+97: E501 line too long (82 > 79 characters)
+118: W291 trailing whitespace
+120: W291 trailing whitespace
+121: E302 expected 2 blank lines, found 1
+130: E302 expected 2 blank lines, found 1
+132: E501 line too long (84 > 79 characters)
+153: E302 expected 2 blank lines, found 1
+166: W291 trailing whitespace
+167: E302 expected 2 blank lines, found 1
+171: W291 trailing whitespace
+173: W291 trailing whitespace
+179: E501 line too long (88 > 79 characters)
+184: E302 expected 2 blank lines, found 1
+186: E501 line too long (107 > 79 characters)
+196: W291 trailing whitespace
+206: E501 line too long (87 > 79 characters)
+214: E501 line too long (120 > 79 characters)
+216: E501 line too long (130 > 79 characters)
+217: E501 line too long (87 > 79 characters)
+221: E501 line too long (111 > 79 characters)
+222: E501 line too long (91 > 79 characters)
+223: E501 line too long (87 > 79 characters)
+234: E501 line too long (85 > 79 characters)
+258: E111 indentation is not a multiple of 4
+260: E501 line too long (89 > 79 characters)
+261: W391 blank line at end of file
+
+I managed to fix some of those errors but ate the end there are still some "line too long" and "trailing whitespace".
+They have no impact on the operation of the code.
+
+Final result:
+
+* 23: E501 line too long (86 > 79 characters)
+40: E501 line too long (108 > 79 characters)
+48: E501 line too long (83 > 79 characters)
+59: E501 line too long (96 > 79 characters)
+60: W293 blank line contains whitespace
+61: W293 blank line contains whitespace
+72: E501 line too long (84 > 79 characters)
+95: E501 line too long (82 > 79 characters)
+116: W291 trailing whitespace
+119: W291 trailing whitespace
+132: E501 line too long (84 > 79 characters)
+168: W291 trailing whitespace
+173: W292 no newline at end of file
 <br>
 
 ![Python Checker](assets/testing.png)
